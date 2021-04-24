@@ -1,0 +1,15 @@
+@assets path_regexp \.(jpg|jpeg|png|gif|ico|css|js)$
+@php path *.php
+
+grocy.bjorkstrand.net {
+    #redir / /index.php
+
+    header @assets Cache-Control "max-age=3600"
+    header  Cache-Control "max-age=3600"
+
+    root * /var/www/public
+    
+    php_fastcgi @php localhost:9000
+
+    file_server
+}
